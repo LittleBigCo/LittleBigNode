@@ -1,6 +1,6 @@
 var crand = require('../../lib/crand');
 
-exports.onLoad = function(){
+exports.onLoad = function(db){
 	//if(ndb != null){
 		//console.log("newAddress.js: NDB is required for this plugin to run.")
 	//} else {

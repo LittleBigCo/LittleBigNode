@@ -9,7 +9,7 @@ var plugins = {};
 var cdn = {};
 var config = configr.defaults
 
-var db = {}
+var db = ndb.loadDB(config.db);
 
 var walk = function(dir, done) {
   var results = [];
@@ -67,6 +67,7 @@ http.createServer(function (req, res) {
 	if(plugins[config.rootDir+furl] != null) {
 		var pluginName = config.rootDir+furl
 		if (plugins[pluginName].onRequest != null) { plugins[pluginName].onRequest(req,res) };
+		ndb.saveDB(db, "./config/db");
 	} else if (cdn[config.cdnDir+furl] != null) {
 		res.writeHead(200);
 		res.end(cdn[config.cdnDir+furl]);

@@ -1,5 +1,6 @@
 {
 	"rootDir": "www/",
 	"cdnDir": "cdn/",
+	"db": "./config/db.json",
 	"port": 80
 }
