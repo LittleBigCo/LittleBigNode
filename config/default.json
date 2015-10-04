@@ -1,4 +1,5 @@
 {
 	"rootDir": "www/",
+	"cdnDir": "cdn/",
 	"port": 80
 }

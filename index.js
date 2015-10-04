@@ -4,6 +4,7 @@ var url = require('url');
 var path = require('path');
 var configr = require('./lib/configr');
 var plugins = {};
+var cdn = {};
 var config = configr.defaults
 
 var walk = function(dir, done) {
@@ -30,7 +31,6 @@ var walk = function(dir, done) {
   });
 };
 
-console.log(__dirname+"\\"+config.rootDir);
 walk(config.rootDir, function(err, files) {
 	if (err) return;
 	files.forEach(function(f) {
@@ -43,6 +43,17 @@ walk(config.rootDir, function(err, files) {
 	});
 });
 
+walk(config.cdnDir, function(err, files) {
+	if (err) return;
+	files.forEach(function(f) {
+		if (fs.lstatSync(f).isDirectory()) return;
+		console.log('Loading ' + f);
+		cdn[f] = fs.readFileSync(f);
+		console.log(cdn[f]);
+		//console.log(plugins[pluginName]);
+	});
+});
+
 http.createServer(function (req, res) {
 	var queryObject = url.parse(req.url,true).query;
 	var furl = req.url.split("?")[0]
@@ -52,6 +63,9 @@ http.createServer(function (req, res) {
 	if(plugins[config.rootDir+furl] != null) {
 		var pluginName = config.rootDir+furl
 		if (plugins[pluginName].onRequest != null) { plugins[pluginName].onRequest(req,res) };
+	} else if (cdn[config.cdnDir+furl] != null) {
+		res.writeHead(200);
+		res.end(cdn[config.cdnDir+furl]);
 	} else {
 		res.writeHead(404);
 		res.end("404 "+furl);
