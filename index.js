@@ -3,9 +3,13 @@ var http = require('http');
 var url = require('url');
 var path = require('path');
 var configr = require('./lib/configr');
+var crand = require('./lib/crand');
+var ndb = require('./lib/ndb');
 var plugins = {};
 var cdn = {};
 var config = configr.defaults
+
+var db = {}
 
 var walk = function(dir, done) {
   var results = [];

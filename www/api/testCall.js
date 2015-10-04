@@ -4,6 +4,6 @@ exports.onRequest = function(req,res){
 	res.end(req.url);
 }
 
-exports.onLoad = function() {
+exports.onLoad = function(db) {
 	console.log("testCall.js loaded!");
 }
