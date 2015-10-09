@@ -11,6 +11,9 @@ var config = configr.defaults
 
 var db = ndb.loadDB(config.db);
 
+console.log("DB:");
+console.log(db);
+
 var walk = function(dir, done) {
   var results = [];
   fs.readdir(dir, function(err, list) {
@@ -53,7 +56,7 @@ walk(config.cdnDir, function(err, files) {
 		if (fs.lstatSync(f).isDirectory()) return;
 		console.log('Loading ' + f);
 		cdn[f] = fs.readFileSync(f);
-		console.log(cdn[f]);
+		//console.log(cdn[f]);
 		//console.log(plugins[pluginName]);
 	});
 });
@@ -66,7 +69,7 @@ http.createServer(function (req, res) {
 	console.log(queryObject);
 	if(plugins[config.rootDir+furl] != null) {
 		var pluginName = config.rootDir+furl
-		if (plugins[pluginName].onRequest != null) { plugins[pluginName].onRequest(req,res) };
+		if (plugins[pluginName].onRequest != null) { plugins[pluginName].onRequest(req,res,db) };
 		ndb.saveDB(db, config.db);
 	} else if (cdn[config.cdnDir+furl] != null) {
 		res.writeHead(200);
