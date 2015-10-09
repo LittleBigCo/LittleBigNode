@@ -1,2 +1,4 @@
 # LittleBigNode
-NodeJS backend for all LittleBigCo projects.
+NodeJS backend for all LittleBigCoin.
+
+[Wiki & Documentation](https://github.com/LittleBigCo/LittleBigNode/wiki)
