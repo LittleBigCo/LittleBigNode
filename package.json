@@ -1,0 +1,22 @@
+{
+  "name": "littlebignode",
+  "version": "1.0.0",
+  "description": "Backend for LittleBigCoin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LittleBigCo/LittleBigNode.git"
+  },
+  "author": "LittleBigCo",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/LittleBigCo/LittleBigNode/issues"
+  },
+  "homepage": "https://github.com/LittleBigCo/LittleBigNode#readme",
+  "dependencies": {
+    "recaptcha-verify": "^0.1.0"
+  }
+}
