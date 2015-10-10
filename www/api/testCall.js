@@ -1,8 +1,7 @@
 exports.onRequest = function(req, res, db){
 	console.log("ECHO "+req.url);
-	console.log(db);
 	res.writeHead(200);
-	res.end(JSON.stringify(db));
+	res.end("ECHO "+req.url);
 }
 
 exports.onLoad = function() {

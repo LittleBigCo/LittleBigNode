@@ -14,6 +14,14 @@ var db = ndb.loadDB(config.db);
 console.log("DB:");
 console.log(db);
 
+if (db.transactions == null) {
+	db.transactions = [];
+}
+
+if (db.addresses == null) {
+	db.addresses = {};
+}
+
 var walk = function(dir, done) {
   var results = [];
   fs.readdir(dir, function(err, list) {

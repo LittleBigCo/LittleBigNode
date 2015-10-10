@@ -9,12 +9,10 @@ exports.onLoad = function(){
 			var generatedNumber = crand.generateRandom();
 			var addr = generatedNumber.split(";")[0];
 			var pin = generatedNumber.split(";")[1];
-			if (db.addresses == null) {
-				db.addresses = {};
-			}
 			db.addresses[addr] = {
 				pin: pin,
-				balance: 0
+				balance: 0,
+				transactions: []
 			}
 			console.log("NEW "+generatedNumber);
 			res.writeHead(200);
