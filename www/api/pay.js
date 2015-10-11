@@ -5,27 +5,27 @@ exports.onRequest = function(req, res, db) {
 	query.amount = parseInt(query.amount);
 	
 	if (query.to == null || query.from == null || query.amount == null || query.pin == null || typeof query.amount != "number") {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("INVALID_ARGUMENTS");
 		return;
 	} else if (query.to.length != 16 || query.from.length != 16) {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("INVALID_ADDRESS");
 		return;
 	} else if (query.pin.length < 4 || query.pin.length > 64) {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("INVALID_PIN_LENGTH");
 		return;
 	} else if (db.addresses[query.to] == null | db.addresses[query.from] == null) {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("ADDRESS_404");
 		return;
 	} else if (query.amount > db.addresses[query.from].balance) {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("INSUFFICIENT_FUNDS");
 		return;
 	} else if (query.amount == 0 || query.amount < 0) {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("INVALID_AMOUNT");
 		return;
 	} else if (query.amount <= db.addresses[query.from].balance) {
@@ -55,7 +55,7 @@ exports.onRequest = function(req, res, db) {
 		res.end("TRANSACTION_SUCCESSFUL");
 		return;
 	} else {
-		res.writeHead(500);
+		res.writeHead(200);
 		res.end("UNKNOWN_ERROR");
 		return;
 	}
