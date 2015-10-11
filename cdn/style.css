@@ -1,0 +1,50 @@
+html, body {
+    font-family: Arial;   
+    background-color: #eeeeee;
+    height: 100%;
+}
+
+section {
+    min-width: 400px;
+    max-width: 900px;
+    height: calc(100% - 160px);
+    background-color: #ffffff;
+    margin: auto;
+    text-align: center;
+    padding-top: 5px;
+}
+
+#lbcf {
+    margin: auto;
+    width: 75%;
+}
+
+#lbccaptcha {
+    position: relative;
+    left: 182px;
+}
+
+header {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 70px;
+    margin: auto;
+    position: relative;
+    left: 0px;
+    text-align: center;
+    background-color: #288EDF;
+    box-shadow: 0px 2px 5px #000000;
+}
+
+h1 {
+    font-size: 52px;
+    margin: 0px;
+    top: 50%;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

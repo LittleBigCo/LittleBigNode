@@ -75,6 +75,7 @@ http.createServer(function (req, res) {
 	if (furl == "/" || furl == "") {furl = "/index"}
 	console.log(req.connection.remoteAddress + " " + req.method + " " + furl);
 	console.log(queryObject);
+    req.query = queryObject;
 	if(plugins[config.rootDir+furl] != null) {
 		var pluginName = config.rootDir+furl
 		if (plugins[pluginName].onRequest != null) { plugins[pluginName].onRequest(req,res,db) };
