@@ -25,20 +25,28 @@ exports.onRequest = function (req, res, db) {
 				res.writeHead(500);
 				res.end("Address was not found.");
 			} else {
+				console.log("Test 1");
 				var txHistTo = db.addresses[req.query.address].transactions;
+				console.log("Test 2");
 				db.transactions[db.transactions.length] = {
-					to: query.address,
+					to: req.query.address,
 					from: "9999999999999999",
-					amount: query.amount,
+					amount: 25,
 					timestamp: Date.now()
 				}
+				console.log("Test 3");
 				txHistTo[txHistTo.length] = {
-					to: query.address,
-					from: query.from,
-					amount: query.amount,
+					to: req.query.address,
+					from: "9999999999999999",
+					amount: 25,
 					timestamp: Date.now()
 				}
+				console.log("Test 4");
 				db.addresses[req.query.address].balance = db.addresses[req.query.address].balance + Number(25);
+				console.log("Test 5");
+				res.writeHead(200);
+				res.end("Success. +25 LBC");
+				console.log("Faucet +25 LBC to "+req.query.address);
 			}
         } else {
             // show warning, render page, return a json, etc. 
