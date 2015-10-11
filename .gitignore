@@ -28,3 +28,6 @@ node_modules
 
 # nDB json file
 db.json
+
+# configuration file
+config.json

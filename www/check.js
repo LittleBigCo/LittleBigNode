@@ -1,6 +1,7 @@
 var Recaptcha = require('recaptcha-verify');
+var configr = require('../../lib/configr');
 var recaptcha = new Recaptcha({
-    secret: '6LdJjw4TAAAAAJy4Z2vKvNDKnANLsSjUmqE5Q7wh',
+    secret: configr.config.secret,
     verbose: true
 });
 
