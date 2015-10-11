@@ -8,7 +8,7 @@ var ndb = require('./lib/ndb');
 var plugins = {};
 var cdn = {};
 
-var config = configr.defaults;
+var config = configr.config;
 
 var db = ndb.loadDB(config.db);
 
