@@ -7,7 +7,8 @@ var crand = require('./lib/crand');
 var ndb = require('./lib/ndb');
 var plugins = {};
 var cdn = {};
-var config = configr.defaults
+
+var config = configr.defaults;
 
 var db = ndb.loadDB(config.db);
 

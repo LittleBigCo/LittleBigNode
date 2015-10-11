@@ -2,5 +2,6 @@
 	"rootDir": "www/",
 	"cdnDir": "cdn/",
 	"db": "./config/db.json",
-	"port": 80
+	"port": 80,
+	"secret": ""
 }
