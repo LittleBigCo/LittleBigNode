@@ -73,7 +73,7 @@ walk(config.cdnDir, function(err, files) {
 http.createServer(function (req, res) {
 	var queryObject = url.parse(req.url,true).query;
 	var furl = req.url.split("?")[0]
-	if (furl == "/" || furl == "") {furl = "/index"}
+	if (furl == "/" || furl == "" || furl == "/index") {furl = "/index.html"}
 	console.log(req.connection.remoteAddress + " " + req.method + " " + furl);
 	console.log(queryObject);
     req.query = queryObject;
