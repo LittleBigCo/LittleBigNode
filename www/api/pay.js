@@ -28,6 +28,10 @@ exports.onRequest = function(req, res, db) {
 		res.writeHead(200);
 		res.end("INVALID_AMOUNT");
 		return;
+	} else if (db.addresses[query.from].pin != query.pin) {
+		res.writeHead(200);
+		res.end("INCORRECT_PIN");
+		return;
 	} else if (query.amount <= db.addresses[query.from].balance) {
 		res.writeHead(200);
 		var txHistFrom = db.addresses[query.from].transactions;
