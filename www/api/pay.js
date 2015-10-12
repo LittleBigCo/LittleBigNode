@@ -36,22 +36,28 @@ exports.onRequest = function(req, res, db) {
 		res.writeHead(200);
 		var txHistFrom = db.addresses[query.from].transactions;
 		var txHistTo = db.addresses[query.to].transactions;
+		if (query.comment==null) {
+			query.comment = "No Comment";
+		}
 		db.transactions[db.transactions.length] = {
 			to: query.to,
 			from: query.from,
 			amount: query.amount,
+			comment: query.comment,
 			timestamp: Date.now()
 		}
 		txHistFrom[txHistFrom.length] = {
 			to: query.to,
 			from: query.from,
 			amount: query.amount,
+			comment: query.comment,
 			timestamp: Date.now()
 		}
 		txHistTo[txHistTo.length] = {
 			to: query.to,
 			from: query.from,
 			amount: query.amount,
+			comment: query.comment,
 			timestamp: Date.now()
 		}
 		db.addresses[query.from].balance = db.addresses[query.from].balance - query.amount;
