@@ -12,6 +12,10 @@ var config = configr.config;
 
 var db = ndb.loadDB(config.db);
 
+Array.prototype.clone = function() {
+	return this.slice(0);
+}
+
 console.log("DB:");
 console.log(db);
 
